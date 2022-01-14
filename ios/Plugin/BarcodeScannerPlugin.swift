@@ -8,6 +8,7 @@ import Capacitor
 @objc(BarcodeScannerPlugin)
 public class BarcodeScannerPlugin: CAPPlugin {
     private let implementation = BarcodeScanner()
+    var savedCall: CAPPluginCall? = nil
 
     @objc func echo(_ call: CAPPluginCall) {
         let value = call.getString("value") ?? ""
