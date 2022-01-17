@@ -220,7 +220,6 @@ import Capacitor
         self.didRunCameraSetup = false
         self.didRunCameraPrepare = false
         
-        
     }
     
     @objc public func echo(_ value: String) -> String {
@@ -228,7 +227,69 @@ import Capacitor
         return value
     }
     
-    @objc public func prepare() {
+    @objc public func prepare(_ targetedFormats: [String]?) {
+        // 重置之前的配置
+        // 因为每次的配置可能不同
+        self.dismantleCamera()
         
+        DispatchQueue.main.async {
+            // 配置摄像头
+            if (self.setupCamera()) {
+                // 标记已经运行过 prepare
+                self.didRunCameraPrepare = true
+                
+                if (self.shouldRunScan) {
+                    self.scan(targetedFormats)
+                }
+            } else {
+                self.shouldRunScan = false
+            }
+        }
+    }
+    
+    public func destroy() {
+        self.dismantleCamera()
+    }
+    
+    func scan(_ targetedFormats: [String]?) {
+        if (!self.didRunCameraPrepare) {
+            if (!self.hasCameraPermission()) {
+                // @TODO()
+                // requestPermission()
+            } else {
+                self.shouldRunScan = true
+                self.prepare(targetedFormats)
+            }
+        } else {
+            self.didRunCameraPrepare = false
+            self.shouldRunScan = false
+            
+            self.targetedFormats = [AVMetadataObject.ObjectType]()
+            if (targetedFormats != nil && targetedFormats?.count ?? 0 > 0) {
+                targetedFormats?.forEach({ (targetedFormat) in
+                    if let value = SupportedFormat(rawValue: targetedFormat)?.value {
+                        print(value)
+                        self.targetedFormats.append(value)
+                    }
+                })
+                
+                if (self.targetedFormats.count == 0) {
+                    print("TargetedFormat was not set correctly.")
+                }
+            }
+            
+            if (self.targetedFormats.count == 0) {
+                for supportedFormat in SupportedFormat.allCases {
+                    self.targetedFormats.append(supportedFormat.value)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.metaOutput?.metadataObjectTypes = self.targetedFormats
+                self.capatureSession?.startRunning()
+            }
+            
+            self.isScanning = true
+        }
     }
 }
