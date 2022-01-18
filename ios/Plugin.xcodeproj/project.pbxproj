@@ -26,6 +26,8 @@
 		F9A5CE242796BB9B0070AE18 /* SGCreateCode.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A5CE1B2796BB9B0070AE18 /* SGCreateCode.h */; };
 		F9A5CE252796BB9B0070AE18 /* SGScanView.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A5CE1C2796BB9B0070AE18 /* SGScanView.h */; };
 		F9A5CE272796BBAB0070AE18 /* SGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9A5CE262796BBAB0070AE18 /* SGQRCode.bundle */; };
+		F9DF80302796E5D000752497 /* BarcodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF802F2796E5D000752497 /* BarcodeVC.swift */; };
+		F9DF80342796ECC400752497 /* BarcodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF80332796ECC400752497 /* BarcodeHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		F9A5CE1C2796BB9B0070AE18 /* SGScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGScanView.h; sourceTree = "<group>"; };
 		F9A5CE262796BBAB0070AE18 /* SGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SGQRCode.bundle; sourceTree = "<group>"; };
 		F9A5CE2E2796BF100070AE18 /* Plugin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Plugin-Bridging-Header.h"; sourceTree = "<group>"; };
+		F9DF802F2796E5D000752497 /* BarcodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeVC.swift; sourceTree = "<group>"; };
+		F9DF80332796ECC400752497 /* BarcodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				50ADFFA72020EE4F00D50D53 /* BarcodeScannerPlugin.m */,
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
 				F9A5CE2E2796BF100070AE18 /* Plugin-Bridging-Header.h */,
+				F9DF802F2796E5D000752497 /* BarcodeVC.swift */,
+				F9DF80332796ECC400752497 /* BarcodeHelper.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -347,7 +353,9 @@
 				50E1A94820377CB70090CE1A /* BarcodeScannerPlugin.swift in Sources */,
 				2F98D68224C9AAE500613A4C /* BarcodeScanner.swift in Sources */,
 				F9A5CE212796BB9B0070AE18 /* SGScanView.m in Sources */,
+				F9DF80302796E5D000752497 /* BarcodeVC.swift in Sources */,
 				F9A5CE1E2796BB9B0070AE18 /* SGCreateCode.m in Sources */,
+				F9DF80342796ECC400752497 /* BarcodeHelper.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* BarcodeScannerPlugin.m in Sources */,
 				F9A5CE1D2796BB9B0070AE18 /* SGAuthorization.m in Sources */,
 				F9A5CE202796BB9B0070AE18 /* SGScanCode.m in Sources */,

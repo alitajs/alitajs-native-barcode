@@ -151,26 +151,25 @@ public class BarcodeScannerPlugin: CAPPlugin {
     
     @objc func scanCode(_ call: CAPPluginCall) {
         self.savedCall = call
-        var authorization = SGAuthorization()
+        let authorization = SGAuthorization()
         authorization.openLog = true
-        authorization.avAuthorizationBlock { authorization, status in
+        authorization.avAuthorizationBlock { [weak self] (authorization, status) in
             if (status == SGAuthorizationStatusSuccess) {
-                
+                DispatchQueue.main.async {
+                    let barcodeVC = BarcodeVC()
+                    barcodeVC.completion = { result, isCancel in
+                        if (!isCancel) {
+                            var resultData = PluginCallResultData()
+                            resultData["content"] = result
+                            call.resolve(resultData)
+                        } else {
+                            call.reject("取消", "cancel")
+                        }
+                        self?.bridge?.dismissVC(animated: true, completion: nil)
+                    }
+                    self?.bridge?.presentVC(barcodeVC, animated: true, completion: nil)
+                }
             }
-        }
-        let scanCode = SGScanCode()
-        DispatchQueue.main.async {
-            scanCode.scan(with: self.bridge?.viewController) { scanCode, result in
-                var jsObject = PluginCallResultData()
-                jsObject["content"] = result;
-                call.resolve(jsObject)
-            }
-            scanCode.startRunningWith {
-                
-            } completion: {
-                
-            }
-
         }
     }
 }
