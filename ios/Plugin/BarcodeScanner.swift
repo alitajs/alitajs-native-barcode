@@ -63,6 +63,8 @@ import Capacitor
     var didRunCameraPrepare: Bool = false
     var isBackgroundHidden: Bool = false
     
+    var completion: ((String?) -> Void)?
+    
     enum SupportedFormat: String, CaseIterable {
         // 1D Product
         //!\ UPC_A is part of EAN_13 according to Apple docs
@@ -117,7 +119,8 @@ import Capacitor
         case couldNotCaptureInput(error: NSError)
     }
     
-    public func load() {
+    // create
+    @objc public func createCameraView() {
         self.cameraView = CameraView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         self.cameraView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
@@ -133,9 +136,9 @@ import Capacitor
     @available(swift, deprecated: 5.6, message: "New Xcode? Check if `AVCaptureDevice.DeviceType` has new types and add them accordingly.")
     private func discoverCaptureDevices() -> [AVCaptureDevice] {
         if #available(iOS 13.0, *) {
-            return AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTripleCamera, .builtInDualCamera, .builtInDualWideCamera, .builtInWideAngleCamera, .builtInUltraWideCamera, .builtInTelephotoCamera, .builtInTrueDepthCamera], mediaType: .video, position: .front).devices
+            return AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTripleCamera, .builtInDualCamera, .builtInDualWideCamera, .builtInWideAngleCamera, .builtInUltraWideCamera, .builtInTelephotoCamera, .builtInTrueDepthCamera], mediaType: .video, position: .back).devices
         } else {
-            return AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTelephotoCamera, .builtInTrueDepthCamera], mediaType: .video, position: .front).devices
+            return AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTelephotoCamera, .builtInTrueDepthCamera], mediaType: .video, position: .back).devices
         }
     }
     
@@ -189,6 +192,7 @@ import Capacitor
             capatureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: capatureSession!)
             cameraView.addPreviewLayer(capatureVideoPreviewLayer)
             self.didRunCameraSetup = true
+            return true
         } catch CaptureError.backCameraUnavailable {
             
         } catch CaptureError.frontCameraUnavailable {
@@ -201,10 +205,10 @@ import Capacitor
         return false
     }
     
-    func dismantleCamera() {
+    @objc public func dismantleCamera() {
         // opposite of setupCamera
         if (self.capatureSession != nil) {
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self.capatureSession!.stopRunning()
                 self.cameraView.removePreviewLayer()
                 self.capatureVideoPreviewLayer = nil
@@ -220,11 +224,6 @@ import Capacitor
         self.didRunCameraSetup = false
         self.didRunCameraPrepare = false
         
-    }
-    
-    @objc public func echo(_ value: String) -> String {
-        print(value)
-        return value
     }
     
     @objc public func prepare(_ targetedFormats: [String]?) {
@@ -245,10 +244,6 @@ import Capacitor
                 self.shouldRunScan = false
             }
         }
-    }
-    
-    public func destroy() {
-        self.dismantleCamera()
     }
     
     func scan(_ targetedFormats: [String]?) {
@@ -290,6 +285,21 @@ import Capacitor
             }
             
             self.isScanning = true
+        }
+    }
+    
+    // 处理 metadataObjects
+    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        if (metadataObjects.count == 0 || !self.isScanning) {
+            // 如果没有返回东西，或者 scanning 为 false，直接返回
+            return
+        }
+        
+        let found = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        if (targetedFormats.contains(found.type)) {
+            if (self.completion != nil) {
+                self.completion!(found.stringValue)
+            }
         }
     }
 }
