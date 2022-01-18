@@ -20,6 +20,7 @@ npx cap sync
 * [`stopScan(...)`](#stopscan)
 * [`checkPermission(...)`](#checkpermission)
 * [`openAppSettings()`](#openappsettings)
+* [`scanCode()`](#scancode)
 * [Interfaces](#interfaces)
 * [Enums](#enums)
 
@@ -103,6 +104,17 @@ checkPermission(options?: CheckPermissionOptions | undefined) => Promise<CheckPe
 ```typescript
 openAppSettings() => Promise<void>
 ```
+
+--------------------
+
+
+### scanCode()
+
+```typescript
+scanCode() => Promise<ScanResult>
+```
+
+**Returns:** <code>Promise&lt;<a href="#scanresult">ScanResult</a>&gt;</code>
 
 --------------------
 

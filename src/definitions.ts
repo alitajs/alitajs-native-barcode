@@ -8,6 +8,7 @@ export interface BarcodeScannerPlugin {
     options?: CheckPermissionOptions,
   ): Promise<CheckPermissionResult>;
   openAppSettings(): Promise<void>;
+  scanCode(): Promise<ScanResult>;
 }
 
 export enum SupportedFormat {

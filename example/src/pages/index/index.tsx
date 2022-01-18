@@ -17,13 +17,13 @@ interface HomePageProps {}
 const HomePage: FC<HomePageProps> = () => {
   const [scanResult, setScanResult] = React.useState<ScanResult>();
   useEffect(() => {
-    BarcodeScanner.prepare();
+    // BarcodeScanner.prepare();
   }, []);
   const startScan = async () => {
     try {
       const permissionStatus = await BarcodeScanner.checkPermission();
       if (permissionStatus.granted) {
-        const result = await BarcodeScanner.startScan({});
+        const result = await BarcodeScanner.scanCode({});
         setScanResult(result);
       }
     } catch (error) {}

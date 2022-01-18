@@ -148,4 +148,29 @@ public class BarcodeScannerPlugin: CAPPlugin {
             }
         }
     }
+    
+    @objc func scanCode(_ call: CAPPluginCall) {
+        self.savedCall = call
+        var authorization = SGAuthorization()
+        authorization.openLog = true
+        authorization.avAuthorizationBlock { authorization, status in
+            if (status == SGAuthorizationStatusSuccess) {
+                
+            }
+        }
+        let scanCode = SGScanCode()
+        DispatchQueue.main.async {
+            scanCode.scan(with: self.bridge?.viewController) { scanCode, result in
+                var jsObject = PluginCallResultData()
+                jsObject["content"] = result;
+                call.resolve(jsObject)
+            }
+            scanCode.startRunningWith {
+                
+            } completion: {
+                
+            }
+
+        }
+    }
 }

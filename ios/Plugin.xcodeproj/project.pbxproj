@@ -16,6 +16,16 @@
 		50ADFFA42020D75100D50D53 /* Capacitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFFA52020D75100D50D53 /* Capacitor.framework */; };
 		50ADFFA82020EE4F00D50D53 /* BarcodeScannerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFFA72020EE4F00D50D53 /* BarcodeScannerPlugin.m */; };
 		50E1A94820377CB70090CE1A /* BarcodeScannerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* BarcodeScannerPlugin.swift */; };
+		F9A5CE1D2796BB9B0070AE18 /* SGAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A5CE142796BB9A0070AE18 /* SGAuthorization.m */; };
+		F9A5CE1E2796BB9B0070AE18 /* SGCreateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A5CE152796BB9A0070AE18 /* SGCreateCode.m */; };
+		F9A5CE1F2796BB9B0070AE18 /* SGScanCode.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A5CE162796BB9A0070AE18 /* SGScanCode.h */; };
+		F9A5CE202796BB9B0070AE18 /* SGScanCode.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A5CE172796BB9A0070AE18 /* SGScanCode.m */; };
+		F9A5CE212796BB9B0070AE18 /* SGScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A5CE182796BB9A0070AE18 /* SGScanView.m */; };
+		F9A5CE222796BB9B0070AE18 /* SGQRCode.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A5CE192796BB9A0070AE18 /* SGQRCode.h */; };
+		F9A5CE232796BB9B0070AE18 /* SGAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A5CE1A2796BB9B0070AE18 /* SGAuthorization.h */; };
+		F9A5CE242796BB9B0070AE18 /* SGCreateCode.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A5CE1B2796BB9B0070AE18 /* SGCreateCode.h */; };
+		F9A5CE252796BB9B0070AE18 /* SGScanView.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A5CE1C2796BB9B0070AE18 /* SGScanView.h */; };
+		F9A5CE272796BBAB0070AE18 /* SGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9A5CE262796BBAB0070AE18 /* SGQRCode.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +55,17 @@
 		96ED1B6440D6672E406C8D19 /* Pods-PluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F65BB2953ECE002E1EF3E424 /* Pods-PluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9A5CE142796BB9A0070AE18 /* SGAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAuthorization.m; sourceTree = "<group>"; };
+		F9A5CE152796BB9A0070AE18 /* SGCreateCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGCreateCode.m; sourceTree = "<group>"; };
+		F9A5CE162796BB9A0070AE18 /* SGScanCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGScanCode.h; sourceTree = "<group>"; };
+		F9A5CE172796BB9A0070AE18 /* SGScanCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGScanCode.m; sourceTree = "<group>"; };
+		F9A5CE182796BB9A0070AE18 /* SGScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGScanView.m; sourceTree = "<group>"; };
+		F9A5CE192796BB9A0070AE18 /* SGQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
+		F9A5CE1A2796BB9B0070AE18 /* SGAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAuthorization.h; sourceTree = "<group>"; };
+		F9A5CE1B2796BB9B0070AE18 /* SGCreateCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCreateCode.h; sourceTree = "<group>"; };
+		F9A5CE1C2796BB9B0070AE18 /* SGScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGScanView.h; sourceTree = "<group>"; };
+		F9A5CE262796BBAB0070AE18 /* SGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SGQRCode.bundle; sourceTree = "<group>"; };
+		F9A5CE2E2796BF100070AE18 /* Plugin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Plugin-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +113,22 @@
 		50ADFF8A201F53D600D50D53 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				F9A5CE262796BBAB0070AE18 /* SGQRCode.bundle */,
+				F9A5CE1A2796BB9B0070AE18 /* SGAuthorization.h */,
+				F9A5CE142796BB9A0070AE18 /* SGAuthorization.m */,
+				F9A5CE1B2796BB9B0070AE18 /* SGCreateCode.h */,
+				F9A5CE152796BB9A0070AE18 /* SGCreateCode.m */,
+				F9A5CE192796BB9A0070AE18 /* SGQRCode.h */,
+				F9A5CE162796BB9A0070AE18 /* SGScanCode.h */,
+				F9A5CE172796BB9A0070AE18 /* SGScanCode.m */,
+				F9A5CE1C2796BB9B0070AE18 /* SGScanView.h */,
+				F9A5CE182796BB9A0070AE18 /* SGScanView.m */,
 				50E1A94720377CB70090CE1A /* BarcodeScannerPlugin.swift */,
 				2F98D68124C9AAE400613A4C /* BarcodeScanner.swift */,
 				50ADFF8B201F53D600D50D53 /* BarcodeScannerPlugin.h */,
 				50ADFFA72020EE4F00D50D53 /* BarcodeScannerPlugin.m */,
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
+				F9A5CE2E2796BF100070AE18 /* Plugin-Bridging-Header.h */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -138,6 +170,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A5CE1F2796BB9B0070AE18 /* SGScanCode.h in Headers */,
+				F9A5CE222796BB9B0070AE18 /* SGQRCode.h in Headers */,
+				F9A5CE252796BB9B0070AE18 /* SGScanView.h in Headers */,
+				F9A5CE242796BB9B0070AE18 /* SGCreateCode.h in Headers */,
+				F9A5CE232796BB9B0070AE18 /* SGAuthorization.h in Headers */,
 				50ADFF99201F53D600D50D53 /* BarcodeScannerPlugin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A5CE272796BBAB0070AE18 /* SGQRCode.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +346,11 @@
 			files = (
 				50E1A94820377CB70090CE1A /* BarcodeScannerPlugin.swift in Sources */,
 				2F98D68224C9AAE500613A4C /* BarcodeScanner.swift in Sources */,
+				F9A5CE212796BB9B0070AE18 /* SGScanView.m in Sources */,
+				F9A5CE1E2796BB9B0070AE18 /* SGCreateCode.m in Sources */,
 				50ADFFA82020EE4F00D50D53 /* BarcodeScannerPlugin.m in Sources */,
+				F9A5CE1D2796BB9B0070AE18 /* SGAuthorization.m in Sources */,
+				F9A5CE202796BB9B0070AE18 /* SGScanCode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +517,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Plugin/Plugin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,6 +543,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Plugin/Plugin-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

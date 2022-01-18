@@ -41,4 +41,8 @@ export class BarcodeScannerWeb
   async openAppSettings(): Promise<void> {
     throw this.unimplemented('Not implemented on web.');
   }
+
+  async scanCode(): Promise<ScanResult> {
+    throw this.unimplemented('Not implemented on web.');
+  }
 }
