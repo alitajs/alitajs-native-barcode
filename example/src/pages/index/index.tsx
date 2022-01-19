@@ -8,7 +8,7 @@ const HomePage: FC<HomePageProps> = () => {
   const [scanResult, setScanResult] = React.useState<ScanResult>();
   const startScan = async () => {
     try {
-      const permissionStatus = await BarcodeScanner.checkPermission();
+      const permissionStatus = await BarcodeScanner.checkPermission({ force: true });
       if (permissionStatus.granted) {
         const result = await BarcodeScanner.scanCode();
         setScanResult(result);

@@ -1,0 +1,14 @@
+[
+	{
+		"pkg": "@alitajs/barcode",
+		"classpath": "com.alitajs.barcode.BarcodeScannerPlugin"
+	},
+	{
+		"pkg": "@capacitor/camera",
+		"classpath": "com.capacitorjs.plugins.camera.CameraPlugin"
+	},
+	{
+		"pkg": "@capacitor/splash-screen",
+		"classpath": "com.capacitorjs.plugins.splashscreen.SplashScreenPlugin"
+	}
+]

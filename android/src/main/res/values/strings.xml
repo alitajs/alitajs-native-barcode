@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">iwhale-android-plugins</string>
+
+    <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
+    <string name="viewfinderview_status_text2">即可自动扫描</string>
+</resources>

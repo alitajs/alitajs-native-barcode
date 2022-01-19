@@ -24,6 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@alitajs/barcode": "file:..",
+    "@capacitor/android": "^3.3.4",
     "@capacitor/camera": "latest",
     "@capacitor/core": "latest",
     "@capacitor/ios": "^3.3.4",
