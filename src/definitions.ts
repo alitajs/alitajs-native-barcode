@@ -1,9 +1,4 @@
 export interface BarcodeScannerPlugin {
-  prepare(): Promise<void>;
-  hideBackground(): Promise<void>;
-  showBackground(): Promise<void>;
-  startScan(options?: ScanOptions): Promise<ScanResult>;
-  stopScan(options?: StopScanOptions): Promise<void>;
   checkPermission(
     options?: CheckPermissionOptions,
   ): Promise<CheckPermissionResult>;
@@ -11,103 +6,9 @@ export interface BarcodeScannerPlugin {
   scanCode(): Promise<ScanResult>;
 }
 
-export enum SupportedFormat {
-  // BEGIN 1D Product
-  /**
-   * Android only, UPC_A is part of EAN_13 according to Apple docs
-   */
-  UPC_A = 'UPC_A',
-
-  UPC_E = 'UPC_E',
-
-  /**
-   * Android only
-   */
-  UPC_EAN_EXTENSION = 'UPC_EAN_EXTENSION',
-
-  EAN_8 = 'EAN_8',
-
-  EAN_13 = 'EAN_13',
-  // END 1D Product
-
-  // BEGIN 1D Industrial
-  CODE_39 = 'CODE_39',
-
-  /**
-   * iOS only
-   */
-  CODE_39_MOD_43 = 'CODE_39_MOD_43',
-
-  CODE_93 = 'CODE_93',
-
-  CODE_128 = 'CODE_128',
-
-  /**
-   * Android only
-   */
-  CODABAR = 'CODABAR',
-
-  ITF = 'ITF',
-
-  /**
-   * iOS only
-   */
-  ITF_14 = 'ITF_14',
-  // END 1D Industrial
-
-  // BEGIN 2D
-  AZTEC = 'AZTEC',
-
-  DATA_MATRIX = 'DATA_MATRIX',
-
-  /**
-   * Android only
-   */
-  MAXICODE = 'MAXICODE',
-
-  PDF_417 = 'PDF_417',
-
-  QR_CODE = 'QR_CODE',
-
-  /**
-   * Android only
-   */
-  RSS_14 = 'RSS_14',
-
-  /**
-   * Android only
-   */
-  RSS_EXPANDED = 'RSS_EXPANDED',
-  // END 2D
-}
-
-export interface ScanOptions {
-  /**
-   * This parameter can be used to make the scanner only recognize specific types of barcodes.
-   *  If `targetedFormats` is _not specified_ or _left empty_, _all types_ of barcodes will be targeted.
-   *
-   * @since 1.2.0
-   */
-  targetedFormats?: SupportedFormat[];
-}
-
-export interface StopScanOptions {
-  /**
-   * If this is set to `true`, the `startScan` method will resolve.
-   * Additionally `hasContent` will be `false`.
-   * For more information see: https://github.com/capacitor-community/barcode-scanner/issues/17
-   *
-   * @default true
-   * @since 2.1.0
-   */
-  resolveScan?: boolean;
-}
-
 export interface ScanResult {
   /**
    * This indicates whether or not the scan resulted in readable content.
-   * When stopping the scan with `resolveScan` set to `true`, for example,
-   * this parameter is set to `false`, because no actual content was scanned.
    *
    * @since 1.0.0
    */
@@ -177,4 +78,19 @@ export interface CheckPermissionResult {
    * @since 1.0.0
    */
   unknown?: boolean;
+}
+
+export interface ScanCodeError {
+  /**
+   * Error message
+   *
+   * @since 1.0.0
+   */
+  errorMessage: string;
+  /**
+   * Error code
+   *
+   * @since 1.0.0
+   */
+  code: 'cancel' | 'cameraDenied';
 }

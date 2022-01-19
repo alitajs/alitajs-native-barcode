@@ -5,99 +5,6 @@ import AVFoundation
 
 @objc(BarcodeScannerPlugin)
 public class BarcodeScannerPlugin: CAPPlugin {
-    private let implementation = BarcodeScanner()
-    var savedCall: CAPPluginCall? = nil
-    var originalBackgroundColor = UIColor.white
-    
-    public override func load() {
-        self.implementation.createCameraView()
-        self.implementation.completion = { result in
-            var jsObject = PluginCallResultData()
-            
-            if (result != nil) {
-                jsObject["hasContent"] = true
-                jsObject["content"] = result
-            } else {
-                jsObject["hasContent"] = false
-            }
-            
-            if (self.savedCall != nil) {
-                self.savedCall?.resolve(jsObject)
-                self.savedCall = nil
-            }
-            
-            self.destroy()
-        };
-    }
-    
-    private func hideBackground() {
-        DispatchQueue.main.async {
-            self.bridge?.webView!.isOpaque = false
-            self.originalBackgroundColor = self.bridge?.webView!.backgroundColor ?? UIColor.white
-            self.bridge?.webView!.backgroundColor = UIColor.clear
-            self.bridge?.webView?.scrollView.backgroundColor = UIColor.clear
-            
-            let javascript = "document.documentElement.style.backgroundColor = 'transparent'"
-            
-            self.bridge?.webView!.evaluateJavaScript(javascript)
-            self.bridge?.webView?.superview?.bringSubviewToFront(self.implementation.cameraView)
-        }
-    }
-    
-    private func showBackground() {
-        DispatchQueue.main.async {
-            let javascript = "document.documentElement.style.backgroundColor = ''"
-            
-            self.bridge?.webView!.evaluateJavaScript(javascript, completionHandler: { result, error in
-                self.bridge?.webView!.isOpaque = true
-                self.bridge?.webView!.backgroundColor = self.originalBackgroundColor
-                self.bridge?.webView!.scrollView.backgroundColor = self.originalBackgroundColor
-                self.bridge?.webView?.superview?.bringSubviewToFront(self.webView!)
-            })
-        }
-    }
-    
-    private func destroy() {
-        implementation.dismantleCamera()
-        self.showBackground()
-    }
-    
-    @objc func prepare(_ call: CAPPluginCall) {
-        implementation.prepare(nil)
-        call.resolve()
-    }
-    
-    @objc func hideBackground(_ call: CAPPluginCall) {
-        self.hideBackground()
-        call.resolve()
-    }
-    
-    @objc func showBackground(_ call: CAPPluginCall) {
-        self.showBackground()
-        call.resolve()
-    }
-    
-    @objc func startScan(_ call: CAPPluginCall) {
-        self.savedCall = call;
-        DispatchQueue.main.async {
-            self.bridge?.webView?.superview!.insertSubview(self.implementation.cameraView, belowSubview: self.webView!)
-            self.implementation.scan(call.getArray("targetedFormats", String.self))
-            self.hideBackground()
-        }
-    }
-    
-    @objc func stopScan(_ call: CAPPluginCall) {
-        if ((call.getBool("resolveScan") ?? false) && self.savedCall != nil) {
-            var jsObject = PluginCallResultData();
-            jsObject["hasContent"] = false
-            
-            savedCall?.resolve(jsObject)
-            savedCall = nil
-        }
-        
-        self.destroy()
-        call.resolve()
-    }
     
     @objc func checkPermission(_ call: CAPPluginCall) {
         let force = call.getBool("force") ?? false
@@ -150,7 +57,6 @@ public class BarcodeScannerPlugin: CAPPlugin {
     }
     
     @objc func scanCode(_ call: CAPPluginCall) {
-        self.savedCall = call
         let authorization = SGAuthorization()
         authorization.openLog = true
         authorization.avAuthorizationBlock { [weak self] (authorization, status) in
@@ -160,6 +66,7 @@ public class BarcodeScannerPlugin: CAPPlugin {
                     barcodeVC.completion = { result, isCancel in
                         if (!isCancel) {
                             var resultData = PluginCallResultData()
+                            resultData["hasContent"] = result == nil ? false : true
                             resultData["content"] = result
                             call.resolve(resultData)
                         } else {
@@ -169,6 +76,8 @@ public class BarcodeScannerPlugin: CAPPlugin {
                     }
                     self?.bridge?.presentVC(barcodeVC, animated: true, completion: nil)
                 }
+            } else {
+                call.reject("没有摄像头权限", "cameraDenied")
             }
         }
     }

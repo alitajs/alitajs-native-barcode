@@ -56,6 +56,19 @@ class BarcodeVC : UIViewController {
         button.frame = CGRect(x: btnX, y: btnY, width: button.frame.width, height: button.frame.height)
         return button
     }()
+    lazy var albumBtn: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("相册", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.sizeToFit()
+        let btnX: CGFloat = self.view.frame.width - button.bounds.width - 24.0
+        let btnY: CGFloat = BarcodeHelper.statusBarHeight() + 10
+        button.frame = CGRect(x: btnX, y: btnY, width: button.bounds.width, height: button.bounds.height)
+        button.addTarget(self, action: #selector(handleAlbumBtnClick(_:)), for: .touchUpInside)
+        return button
+    }()
+
+// MARK: lifecyle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +81,7 @@ class BarcodeVC : UIViewController {
         self.view.addSubview(self.flashlightBtn)
         self.view.addSubview(self.promptLabel)
         self.view.addSubview(self.cancelBtn)
+        self.view.addSubview(self.albumBtn)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,6 +120,8 @@ class BarcodeVC : UIViewController {
         })
     }
 
+// MARK: button action
+    
     @objc func handleCancelClick(_ button: UIButton) {
         if (self.completion != nil) {
             self.completion!(nil, true)
@@ -120,5 +136,13 @@ class BarcodeVC : UIViewController {
             scanCode?.turnOffFlashlight()
             button.isSelected = false
         }
+    }
+    
+    @objc func handleAlbumBtnClick(_ button: UIButton) {
+        scanCode?.read(resultBlock: { [weak self] scanCode, result in
+            if (self?.completion != nil) {
+                self?.completion!(result, false)
+            }
+        })
     }
 }

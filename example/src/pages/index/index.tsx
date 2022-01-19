@@ -1,32 +1,24 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { BarcodeScanner, ScanResult } from '@alitajs/barcode';
 import styles from './index.less';
 
 interface HomePageProps {}
 
-/** 
-    prepare(): Promise<void>;
-    hideBackground(): Promise<void>;
-    showBackground(): Promise<void>;
-    startScan(options?: ScanOptions): Promise<ScanResult>;
-    stopScan(options?: StopScanOptions): Promise<void>;
-    checkPermission(options?: CheckPermissionOptions): Promise<CheckPermissionResult>;
-    openAppSettings(): Promise<void>;
-*/
-
 const HomePage: FC<HomePageProps> = () => {
   const [scanResult, setScanResult] = React.useState<ScanResult>();
-  useEffect(() => {
-    // BarcodeScanner.prepare();
-  }, []);
   const startScan = async () => {
     try {
       const permissionStatus = await BarcodeScanner.checkPermission();
       if (permissionStatus.granted) {
-        const result = await BarcodeScanner.scanCode({});
+        const result = await BarcodeScanner.scanCode();
         setScanResult(result);
+      } else {
+        const goSettings = confirm('没有权限，去设置打开');
+        goSettings && BarcodeScanner.openAppSettings();
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log('error', error);
+    }
   };
   return (
     <div className={styles.center}>
