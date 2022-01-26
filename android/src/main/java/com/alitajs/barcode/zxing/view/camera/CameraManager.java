@@ -24,6 +24,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
+import com.alitajs.barcode.util.DimensionUtil;
 import com.google.zxing.PlanarYUVLuminanceSource;
 
 import java.io.IOException;
@@ -222,10 +223,8 @@ public final class CameraManager {
 //			int height = findDesiredDimensionInRange(screenResolution.y,
 //					MIN_FRAME_HEIGHT, MAX_FRAME_HEIGHT);
 			
-			int width = findDesiredDimensionInRange(screenResolution.x,
-					MIN_FRAME_WIDTH, MAX_FRAME_WIDTH)*4/5;
-			int height = findDesiredDimensionInRange(screenResolution.y,
-					MIN_FRAME_HEIGHT, MAX_FRAME_HEIGHT)*4/5;
+			int width = DimensionUtil.dpToPx(260);
+			int height = DimensionUtil.dpToPx(260);
 
 			int leftOffset = (screenResolution.x - width) / 2;
 			int topOffset = (screenResolution.y - height) / 2;
@@ -238,7 +237,7 @@ public final class CameraManager {
 
 	private static int findDesiredDimensionInRange(int resolution, int hardMin,
 			int hardMax) {
-		int dim = 5 * resolution / 8; // Target 5/8 of each dimension
+		int dim = 6 * resolution / 8; // Target 6/8 of each dimension
 		if (dim < hardMin) {
 			return hardMin;
 		}

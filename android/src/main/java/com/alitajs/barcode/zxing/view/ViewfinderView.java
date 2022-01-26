@@ -29,6 +29,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.alitajs.barcode.util.DimensionUtil;
 import com.google.zxing.ResultPoint;
 import com.alitajs.barcode.R;
 import com.alitajs.barcode.zxing.view.camera.CameraManager;
@@ -202,8 +203,8 @@ public final class ViewfinderView extends View {
         paint.setColor(Color.BLUE);
         paint.setStyle(Paint.Style.FILL);
 
-        int corWidth = 15;
-        int corLength = 45;
+        int corWidth = DimensionUtil.dpToPx(5);
+        int corLength = DimensionUtil.dpToPx(20);
 
         // 左上角
         canvas.drawRect(frame.left - corWidth, frame.top, frame.left, frame.top
@@ -240,8 +241,8 @@ public final class ViewfinderView extends View {
                 R.string.viewfinderview_status_text1);
         String statusText2 = getResources().getString(
                 R.string.viewfinderview_status_text2);
-        int statusTextSize = 45;
-        int statusPaddingTop = 180;
+        int statusTextSize = DimensionUtil.dpToPx(15);
+        int statusPaddingTop = DimensionUtil.dpToPx(100);
 
         paint.setColor(statusColor);
         paint.setTextSize(statusTextSize);
