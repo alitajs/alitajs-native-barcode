@@ -17,7 +17,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alitajs/alitajs-native-barcode.git"
+    "url": "https://github.com/alitajs/alitajs-native-barcode.git"
   },
   "bugs": {
     "url": "https://github.com/alitajs/alitajs-native-barcode/issues"
