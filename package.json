@@ -17,10 +17,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alitajs/barcode.git"
+    "url": "git+https://github.com/alitajs/alitajs-native-barcode.git"
   },
   "bugs": {
-    "url": "https://github.com/alitajs/barcode/issues"
+    "url": "https://github.com/alitajs/alitajs-native-barcode/issues"
   },
   "keywords": [
     "capacitor",
