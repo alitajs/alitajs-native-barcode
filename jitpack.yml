@@ -1,6 +1,9 @@
 jdk:
   - openjdk11
 before_install:
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  - nvm install lts/gallium
+  - nvm use lts/gallium
   - npm install
 install:
   - cd android
