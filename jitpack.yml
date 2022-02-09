@@ -1,8 +1,8 @@
 jdk:
   - openjdk11
 before_install:
-  - chmod +x scripts/prepare.sh
-  - ./scripts/prepare.sh
+  - chmod +x scripts/prepare-android.sh
+  - ./scripts/prepare-android.sh
 install:
   - cd android
   - ./gradlew clean build publishReleasePublicationToMavenLocal --max-workers 1 -b build.gradle -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true
