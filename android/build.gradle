@@ -48,6 +48,11 @@ repositories {
     mavenCentral()
 }
 
+def LIB_VERSION = System.getenv('PLUGIN_VERSION')
+def ARTIFACT_ID = 'barcode'
+
+group = 'com.github.alitajs'
+version = LIB_VERSION ? LIB_VERSION : '1.0.0'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -72,9 +77,9 @@ afterEvaluate {
                 from components.release
 
                 // You can then customize attributes of the publication as shown below.
-                groupId = 'com.github.alitajs'
-                artifactId = 'alitajs-native-barcode'
-                version = '1.0.0'
+                groupId group
+                artifactId ARTIFACT_ID
+                version version
             }
         }
     }
