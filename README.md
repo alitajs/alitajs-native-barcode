@@ -109,3 +109,28 @@ scanCode() => Promise<ScanResult>
 | **`content`**    | <code>string</code>  | This holds the content of the barcode if available.                  | 1.0.0 |
 
 </docgen-api>
+
+## How to use this plugin in existing native project
+
+### ios
+
+in `Podfile`
+
+```ruby
+pod 'AlitajsBarcode'
+```
+
+### android
+
+in `build.gradle`
+
+```java
+repositories {
+  ...
+  maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+  implementation 'com.github.alitajs:alitajs-native-barcode:Tag'
+}
+```
