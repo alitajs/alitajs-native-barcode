@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		03FC29A292ACC40490383A1F /* Pods_Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */; };
 		20C0B05DCFC8E3958A738AF2 /* Pods_PluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */; };
-		2F98D68224C9AAE500613A4C /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F98D68124C9AAE400613A4C /* BarcodeScanner.swift */; };
 		50ADFF92201F53D600D50D53 /* Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFF88201F53D600D50D53 /* Plugin.framework */; };
 		50ADFF97201F53D600D50D53 /* BarcodeScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFF96201F53D600D50D53 /* BarcodeScannerTests.swift */; };
 		50ADFF99201F53D600D50D53 /* BarcodeScannerPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ADFF8B201F53D600D50D53 /* BarcodeScannerPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F98D68124C9AAE400613A4C /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF88201F53D600D50D53 /* Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF8B201F53D600D50D53 /* BarcodeScannerPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarcodeScannerPlugin.h; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				F9A5CE1C2796BB9B0070AE18 /* SGScanView.h */,
 				F9A5CE182796BB9A0070AE18 /* SGScanView.m */,
 				50E1A94720377CB70090CE1A /* BarcodeScannerPlugin.swift */,
-				2F98D68124C9AAE400613A4C /* BarcodeScanner.swift */,
 				50ADFF8B201F53D600D50D53 /* BarcodeScannerPlugin.h */,
 				50ADFFA72020EE4F00D50D53 /* BarcodeScannerPlugin.m */,
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
@@ -351,7 +348,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				50E1A94820377CB70090CE1A /* BarcodeScannerPlugin.swift in Sources */,
-				2F98D68224C9AAE500613A4C /* BarcodeScanner.swift in Sources */,
 				F9A5CE212796BB9B0070AE18 /* SGScanView.m in Sources */,
 				F9DF80302796E5D000752497 /* BarcodeVC.swift in Sources */,
 				F9A5CE1E2796BB9B0070AE18 /* SGCreateCode.m in Sources */,
